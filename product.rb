@@ -16,6 +16,10 @@ class Product
     @offer        = get_offer(code)
   end
 
+  def price_with_discount
+    price - discount
+  end
+
 
   private
 

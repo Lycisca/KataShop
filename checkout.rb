@@ -1,10 +1,12 @@
 # checkout.rb
 require_relative 'product'
+require_relative 'rule_3gt'
+require_relative 'rule_2x1'
 
 class Checkout
   
-  PRICING_RULES = %w(2x1 gt3)
-
+  PRICING_RULES = [Rule_2x1.new('AM'), Rule_3gt.new('AC', 3, 0.50)]
+  
   def initialize(pricing_rules = PRICING_RULES)
     @rules  = pricing_rules
     @basket = []
@@ -16,7 +18,7 @@ class Checkout
 
   def total
     apply_rules
-    @basket.inject(0){ |result, item| result + (item.price - item.discount) }
+    @basket.inject(0){ |result, item| result + (item.price_with_discount) }
   end
 
 
@@ -24,24 +26,8 @@ class Checkout
 
   def apply_rules
     @rules.each do |rule|
-      offer_products = @basket.select{ |item| item.offer == rule }
-      if rule == '2x1'
-        rule_2x1(offer_products)
-      elsif rule == 'gt3'
-        rule_gt3(offer_products)
-      end
-    end
-  end
-
-  def rule_2x1(offer_products)
-    offer_products.each_with_index{ |item, i|
-      item.discount = item.price if i.odd?
-    }
-  end
-
-  def rule_gt3(offer_products)
-    if offer_products.size >= 3
-      offer_products.each{ |item| item.discount = 0.50 }
+      offer_products = @basket.select{ |item| item.code == rule.product_code }
+      rule.apply(offer_products)  
     end
   end
 end
