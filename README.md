@@ -18,23 +18,23 @@ If you buy 3 or more AC, the price should drop to 4.50. Our check-out can scan i
 
 The interface to our checkout looks like this (shown in Ruby):
 
-co = Checkout.new(pricing_rules)
-co.scan(item)
-co.scan(another item)
-Price = co.total
+    co = Checkout.new(pricing_rules)
+    co.scan(item)
+    co.scan(another item)
+    Price = co.total
 
 Implement a checkout system that fulfils these requirements in Ruby.
 
 ## Test Data
 
-Basket: AM, AC, AM, CA
-Total price expected: £22.25
+    Basket: AM, AC, AM, CA
+    Total price expected: £22.25
 
-Basket: AM, AM
-Total price expected: £3.11
+    Basket: AM, AM
+    Total price expected: £3.11
 
-Basket: AC, AC, AM, AC
-Total price expected: £16.61
+    Basket: AC, AC, AM, AC
+    Total price expected: £16.61
 
 Running the tests
 
