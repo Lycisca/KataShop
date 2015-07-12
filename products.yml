@@ -1,12 +1,10 @@
 AM:
   :description: "Agua mineral"
   :price: 3.11
-  :offer: '2x1'
 
 AC:
   :description: "Aceite"
   :price: 5.00
-  :offer: 'gt3'
 
 CA:
   :description: "Cafe"

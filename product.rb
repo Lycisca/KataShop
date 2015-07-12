@@ -13,7 +13,6 @@ class Product
     @description  = get_description(code)
     @price        = get_price(code)
     @discount     = 0
-    @offer        = get_offer(code)
   end
 
   def price_with_discount
@@ -29,9 +28,5 @@ class Product
 
   def get_description(code)
     PRODUCTS[code][:description]
-  end
-
-  def get_offer(code)
-    PRODUCTS[code][:offer]
   end
 end
