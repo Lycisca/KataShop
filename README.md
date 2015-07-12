@@ -35,6 +35,7 @@ Total price expected: £3.11
 
 Basket: AC, AC, AM, AC
 Total price expected: £16.61
+
 Running the tests
 
-  ruby checkout_test.rb
+    ruby checkout_test.rb
